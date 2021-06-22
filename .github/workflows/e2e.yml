@@ -22,6 +22,6 @@ jobs:
         uses: jakepartusch/wait-for-netlify-action@v1.2
         id: waitFor200
         with:
-          site_name: "jakepartusch"
+          site_name: "reverent-joliot-43ca55"
       - name: Echo URL
         run: echo "${{ steps.waitFor200.outputs.url }}"
