@@ -15,8 +15,7 @@ function App() {
           onChange={(e) => setValue(e.target.value)}
           data-testid="user input"
         />
-
-        {/* BREAKING THE TEST <h1>{value}</h1> */}
+        <h1>{value}</h1>
       </header>
     </div>
   );
