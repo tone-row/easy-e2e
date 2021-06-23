@@ -1,9 +1,15 @@
-import { test, expect } from "@playwright/test";
+import { test as base, expect } from "@playwright/test";
+
+type Fixtures = { url: string };
+
+const test = base.extend<Fixtures>({
+  url: process.env.E2E_START_URL ?? "http://localhost:3000",
+});
 const { describe, beforeEach } = test;
 
 describe("App", () => {
-  beforeEach(async ({ page }) => {
-    await page.goto("http://localhost:3000");
+  beforeEach(async ({ page, url }) => {
+    await page.goto(url as string);
   });
 
   test("Correct Page Title", async ({ page }) => {
