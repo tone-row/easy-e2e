@@ -9,14 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - name: Load Browsers
+        with:
+          node-version: 12.x
+      - name: Setup Playwright
         run: npx playwright install-deps
       - name: Install
         run: |
           yarn install --frozen-lockfile
-      # - name: Build
-      #   run: |
-      #     yarn build
       - name: Waiting for 200 from the Netlify Preview
         uses: jakepartusch/wait-for-netlify-action@v1.2
         id: waitFor200
