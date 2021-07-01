@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import createPersistedState from "use-persisted-state";
 import "./App.css";
 
+const useText = createPersistedState("text");
+
 function App() {
-  const [value, setValue] = useState("");
+  const [text, setText] = useText("");
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Change something about the site to see if the deploy preview url
-          updates
-        </p>
-        <input
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          data-testid="user input"
-        />
-        <h1>{value}</h1>
-      </header>
+      <p>Enter some text you would like to store</p>
+      <input
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        data-testid="user input"
+      />
+      <span className="display">{text}</span>
     </div>
   );
 }
